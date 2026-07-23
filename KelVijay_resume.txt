@@ -1,0 +1,35 @@
+                         Kel Vijay                          
+    Kota, Rajasthan | 9876543210 | kelvijay24@gmail.com
+    https://www.linkedin.com/feed/ | https://github.com/Kel1357
+============================================================
+
+PROFESSIONAL SUMMARY
+------------------------------------------------------------
+Software Engineer Intern: Developed a Python Program that store/show Resume that helps new employees in getting jobs
+
+EDUCATION
+------------------------------------------------------------
+B-tech CSE, 8.2 CGPA, Bennett University, Noida
+
+EXPERIENCE
+------------------------------------------------------------
+Former Software Engineer Intern at Alphabet Inc.
+
+PROJECTS
+------------------------------------------------------------
+Resume Template | Python
+Created A Resume Template where you can submit & store resumes
+
+TECHNICAL SKILLS
+------------------------------------------------------------
+Python
+
+CERTIFICATIONS
+------------------------------------------------------------
+Python Certification
+VGT
+
+LEADERSHIPS/ACTIVITIES
+------------------------------------------------------------
+Manager in HR Department
+Led 20+ new members to work towards goals that improve and promote community service, academics and unity
