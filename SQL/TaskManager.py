@@ -1,4 +1,3 @@
-#Task Manager
 import pymysql
 import matplotlib.pyplot as plt
 from datetime import datetime
