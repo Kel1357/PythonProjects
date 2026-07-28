@@ -1,4 +1,3 @@
-#Inverse Of Matrix
 def display(M,R,C):
     for i in range(R):
         for j in range(C):
