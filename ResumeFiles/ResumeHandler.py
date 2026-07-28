@@ -46,6 +46,7 @@ class Resume:
         try:
             print("\n---Header---")
             fn=input("Full Name:")
+            dob = input("Date of Birth (DD/MM/YYYY):")
             ph=input("Phone Number:")
             email=input("Email Address:")
             linkedin=input("LinkedIn URL:")
@@ -76,6 +77,7 @@ class Resume:
             records.append({
                 "id": self.next(records),
                 "Full Name": fn,
+                "DOB": dob,
                 "Phone Number": ph,
                 "Email Address": email,
                 "LinkedIn URL": linkedin,
@@ -98,9 +100,9 @@ class Resume:
         if not records:
             print("No Records Found")
             return
-        print("\nID\tName\t\t\t\tEmail\t\t\t\t\tPhone")
+        print("\nID\tName\tDOB\t\t\t\tEmail\t\t\t\tPhone No.")
         for rec in records:
-            print(f"{rec['id']}\t{rec['Full Name']:<20}{rec['Email Address']:<20}\t{rec['Phone Number']:<11}")
+            print(f"{rec['id']}\t{rec['Full Name']:<20}\t{rec['DOB']}\t{rec['Email Address']:<20}\t{rec['Phone Number']:<11}")
     def sort_data(self,p=True):
         self.show_data()
         records = self.load_records()
@@ -146,6 +148,7 @@ class Resume:
     def print(self, r):
         print("\n" + "=" * 60)
         print(f"{r['Full Name']:^60}")
+        print(f"DOB: {r['DOB']}".center(60))
         print(f"{r['City, State']} | {r['Phone Number']} | {r['Email Address']}".center(60))
         print(f"{r['LinkedIn URL']} | {r['Portfolio / GitHub URL']}".center(60))
         print("=" * 60)
@@ -208,18 +211,19 @@ class Resume:
             return
         field={
             "1": ("Full Name", "Full Name", False),
-            "2": ("Phone Number", "Phone Number", False),
-            "3": ("Email Address", "Email Address", False),
-            "4": ("LinkedIn URL", "LinkedIn URL", False),
-            "5": ("Portfolio / GitHub URL", "Portfolio / GitHub URL", False),
-            "6": ("Location (City, State)", "Location (City, State)", False),
-            "7": ("Summary", "Summary", False),
-            "8": ("Education", "Education", False),
-            "9": ("Experience", "Experience", False),
-            "10": ("Projects", "Projects", False),
-            "11": ("Skills", "Skills", False),
-            "12": ("Certifications", "Certifications", False),
-            "13": ("Leaderships", "Leaderships / Activities", False),
+            "2": ("DOB", "Date of Birth", False),
+            "3": ("Phone Number", "Phone Number", False),
+            "4": ("Email Address", "Email Address", False),
+            "5": ("LinkedIn URL", "LinkedIn URL", False),
+            "6": ("Portfolio / GitHub URL", "Portfolio / GitHub URL", False),
+            "7": ("Location (City, State)", "Location (City, State)", False),
+            "8": ("Summary", "Summary", False),
+            "9": ("Education", "Education", False),
+            "10": ("Experience", "Experience", False),
+            "11": ("Projects", "Projects", False),
+            "12": ("Skills", "Skills", False),
+            "13": ("Certifications", "Certifications", False),
+            "14": ("Leaderships", "Leaderships / Activities", False),
         }
         while True:
             print("\nWhich Field, Do you want To Update?")
@@ -342,9 +346,9 @@ class Resume:
         if not mat:
             print("Resume Not Found")
             return
-        print("\nID\tFull Name\t\t\tEmail Address\t\t\tPhone Number\tSkills")
+        print("\nID\tFull Name\tDOB\t\tEmail Address\t\t\tPhone Number\tSkills")
         for r in mat:
-            print(f"{r['id']}\t{r['Full Name']:<20}{r['Email Address']:<20}\t{r['Phone Number']:<11}\t\t{r['Skills']}")
+            print(f"{r['id']}\t{r['Full Name']:<20}\t{r['DOB']:<12}{r['Email Address']:<20}\t{r['Phone Number']:<11}\t\t{r['Skills']}")
     def export_data(self):
         self.show_data()
         try:
@@ -360,7 +364,8 @@ class Resume:
         filename=f"{r['Full Name'].replace(' ','')}_resume.txt"
         with open(filename, "w") as f:
             f.write(f"{r['Full Name']:^60}\n")
-            f.write(f"{r['City, State']} | {r['Phone Number']} | {r['Email Address']}\n".center(60))
+            f.write(f"DOB: {r['DOB']}\n")
+            f.write(f"Location: {r['City, State']} | {r['Phone Number']} | {r['Email Address']}\n".center(60))
             f.write(f"{r['LinkedIn URL']} | {r['Portfolio / GitHub URL']}\n".center(60))
             f.write("=" * 60 + "\n")
 
@@ -547,3 +552,4 @@ if __name__ == "__main__":
                 print("Invalid Choice")
         except ValueError:
             print("Invalid Value, Please Try Again")
+            
