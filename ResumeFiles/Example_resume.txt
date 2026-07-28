@@ -1,0 +1,41 @@
+                          Example                           
+DOB: 01/04/2001
+Location: Noida, Uttar Pradesh, India | 9999999999 | example@123gmail.com
+https://www.linkedin.com/feed/ | https://github.com/Kel1357
+============================================================
+
+PROFESSIONAL SUMMARY
+------------------------------------------------------------
+Skilled in time management, organization, and communication.
+Internship from Alphabet Inc. in 2nd year
+Currently Looking For Job In Noida-Delhi Region
+
+EDUCATION
+------------------------------------------------------------
+Bachelor's Degree In Artificial Intelligence and Data Science
+Bennett University, Noida
+2026-2029
+8.2 CGPA
+
+EXPERIENCE
+------------------------------------------------------------
+Currently looking for jobs after completing College
+
+Internship from Alphabet Inc. in 2nd year
+
+PROJECTS
+------------------------------------------------------------
+Resume Handler: Used to manage Resumes
+
+TECHNICAL SKILLS
+------------------------------------------------------------
+Time Management, Communication, Organization, Python, SQL, C++, DSA, C-Programming and Java
+
+CERTIFICATIONS
+------------------------------------------------------------
+B-tech Education in Artificial Intelligence and Data Science Certificate By Bennett University
+
+LEADERSHIPS/ACTIVITIES
+------------------------------------------------------------
+Club Vice-President of Management & Organization in Bennet University in 3rd Year.
+Senior Mentor in Management & Organisation in Bennett University in 4th Year.
