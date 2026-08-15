@@ -33,19 +33,19 @@ def show_data():
     else:
         print("No Records Found")
 def next_task():
-    sql = "select * from taskmanager where status='Pending' order by priority desc, deadline asc limit 1"
-    cur = cn.cursor()
+    sql="select * from taskmanager where status='Pending' order by priority desc, deadline asc limit 1"
+    cur=cn.cursor()
     cur.execute(sql)
-    d = cur.fetchone()
+    d=cur.fetchone()
     if d:
         print("Next Recommended Task:", d[1], "| Category:", d[2], "| Priority:", d[3], "| Deadline:", d[4])
     else:
         print("No Pending Tasks Found")
 def sort_by_deadline():
-    sql = "select * from taskmanager order by deadline asc"
-    cur = cn.cursor()
+    sql="select * from taskmanager order by deadline asc"
+    cur=cn.cursor()
     cur.execute(sql)
-    data = cur.fetchall()
+    data=cur.fetchall()
     for d in data:
         print(d)
 def filter_tasks():
@@ -53,19 +53,19 @@ def filter_tasks():
         print("\n--- FILTER TASKS ---")
         print("1. Filter by Category")
         print("2. Filter by Status (Pending/Completed)")
-        choice = input("Enter your choice: ")
-        cur = cn.cursor()
-        if choice == "1":
-            cat = input("Enter Category: ")
-            sql = "select * from taskmanager where category='" + cat + "'"
-        elif choice == "2":
-            status = input("Enter Status (Pending/Completed): ")
-            sql = "select * from taskmanager where status='" + status + "'"
+        choice=input("Enter your choice: ")
+        cur=cn.cursor()
+        if choice=="1":
+            cat=input("Enter Category: ")
+            sql="select * from taskmanager where category='" + cat + "'"
+        elif choice=="2":
+            status=input("Enter Status (Pending/Completed): ")
+            sql="select * from taskmanager where status='" + status + "'"
         else:
             print("Invalid choice")
             return
         cur.execute(sql)
-        data = cur.fetchall()
+        data=cur.fetchall()
         if data:
             print("\n--- Filtered Tasks ---")
             for d in data:
@@ -76,25 +76,25 @@ def filter_tasks():
         print("Error occurred:", e)
 def dashboard():
     try:
-        cur = cn.cursor()
+        cur=cn.cursor()
         cur.execute("select count(*) from taskmanager")
-        total = cur.fetchone()[0]
+        total=cur.fetchone()[0]
         cur.execute("select count(*) from taskmanager where status='Completed'")
-        completed = cur.fetchone()[0]
-        pending = total - completed
+        completed=cur.fetchone()[0]
+        pending=total-completed
         cur.execute("select count(*) from taskmanager where status='Pending' and priority>=4")
-        high_priority = cur.fetchone()[0]
-        rate = (completed / total * 100) if total > 0 else 0
+        high_priority=cur.fetchone()[0]
+        rate=(completed/total*100) if total>0 else 0
         print("---PRODUCTIVITY DASHBOARD---")
-        print("Total Tasks:", total)
-        print("Completed:", completed)
-        print("Pending:", pending)
-        print("High Priority Pending:", high_priority)
-        print("Completion Rate:", round(rate, 1), "%")
-        labels = ['Completed', 'Pending', 'High Priority Pending']
-        values = [completed, pending, high_priority]
+        print("Total Tasks:",total)
+        print("Completed:",completed)
+        print("Pending:",pending)
+        print("High Priority Pending:",high_priority)
+        print("Completion Rate:",round(rate, 1),"%")
+        labels=['Completed','Pending','High Priority Pending']
+        values=[completed,pending,high_priority]
         plt.figure()
-        plt.bar(labels, values, color=['green','blue','red'])
+        plt.bar(labels,values,color=['green','blue','red'])
         plt.title("Task Productivity Overview")
         plt.xlabel("Task Status")
         plt.ylabel("Number of Tasks")
@@ -104,107 +104,106 @@ def dashboard():
 def status_completed():
     show_data()
     try:
-        task_id = input("Enter Task ID to mark completed: ")
-        sql = "update taskmanager set status='Completed' where id=" + task_id
-        cur = cn.cursor()
+        task_id=input("Enter Task ID to mark completed:")
+        sql="update taskmanager set status='Completed' where id=" +task_id
+        cur=cn.cursor()
         cur.execute(sql)
-        if cur.rowcount > 0:
+        if cur.rowcount>0:
             print("Task marked as Completed")
-            task_history("Completed", task_id, "Marked as done")
+            task_history("Completed",task_id,"Marked as done")
         else:
             print("Task ID not found")
     except ValueError:
-        print("Invalid input, please enter a valid Task ID")
+        print("Invalid input, Please enter a valid Task ID")
     except Exception as e:
         print("Error occurred:", e)
 def edit_task():
     show_data()
     try:
-        task_id = input("Enter Task ID to edit: ")
+        task_id=input("Enter Task ID to edit:")
         print("1. Edit Description\n2. Edit Category\n3. Edit Priority\n4. Edit Deadline")
-        choice = int(input("Enter choice: "))
-        cur = cn.cursor()
-        if choice == 1:
-            new_description = input("Enter new description: ")
-            sql = "update taskmanager set description='" + new_description + "' where id=" + task_id
-            details = f"New Description: {new_description}"
-        elif choice == 2:
-            new_category = input("Enter new category: ")
-            sql = "update taskmanager set category='" + new_category + "' where id=" + task_id
-            details = f"New Category: {new_category}"
-        elif choice == 3:
-            new_priority = input("Enter new priority (1-5): ")
-            sql = "update taskmanager set priority=" + new_priority + " where id=" + task_id
-            details = f"New Priority: {new_priority}"
-        elif choice == 4:
-            new_deadline = input("Enter new deadline (DD-MM-YYYY): ")
-            sql = "update taskmanager set deadline='" + new_deadline + "' where id=" + task_id
-            details = f"New Deadline: {new_deadline}"
+        choice=int(input("Enter choice:"))
+        cur=cn.cursor()
+        if choice==1:
+            new_description=input("Enter new description:")
+            sql="update taskmanager set description='" +new_description+ "' where id=" +task_id
+            details=f"New Description: {new_description}"
+        elif choice==2:
+            new_category=input("Enter new category:")
+            sql="update taskmanager set category='" +new_category+ "' where id=" +task_id
+            details=f"New Category: {new_category}"
+        elif choice==3:
+            new_priority=input("Enter new priority (1-5):")
+            sql="update taskmanager set priority=" +new_priority+ " where id=" +task_id
+            details=f"New Priority: {new_priority}"
+        elif choice==4:
+            new_deadline=input("Enter new deadline (DD-MM-YYYY):")
+            sql="update taskmanager set deadline='" +new_deadline+ "' where id=" +task_id
+            details=f"New Deadline: {new_deadline}"
         else:
             print("Invalid choice")
             return
         cur.execute(sql)
-        if cur.rowcount > 0:
+        if cur.rowcount>0:
             print("Task updated successfully")
-            task_history("Edited", task_id, details)
+            task_history("Edited",task_id,details)
         else:
             print("Task ID not found")
     except ValueError:
-        print("Invalid input, please enter numbers where required")
+        print("Invalid input, Please enter numbers where required")
     except Exception as e:
-        print("Error occurred:", e)
+        print("Error occurred:",e)
 def delete_task():
     show_data()
     try:
-        task_id = input("Enter Task ID to delete: ")
-        sql = "delete from taskmanager where id=" + task_id
-        cur = cn.cursor()
+        task_id=input("Enter Task ID to delete:")
+        sql="delete from taskmanager where id=" +task_id
+        cur=cn.cursor()
         cur.execute(sql)
-        if cur.rowcount > 0:
+        if cur.rowcount>0:
             print("Task deleted successfully")
-            task_history("Deleted", task_id, "Removed from taskmanager")
+            task_history("Deleted",task_id,"Removed from taskmanager")
         else:
             print("Task ID not found")
     except ValueError:
-        print("Invalid input, please enter a valid Task ID")
+        print("Invalid input, Please enter a valid Task ID")
     except Exception as e:
         print("Error occurred:", e)
 def search_task():
-    key = input("Enter keyword: ")
-    sql = "select * from taskmanager where description like '%" + key + "%'"
-    cur = cn.cursor()
+    key=input("Enter keyword:")
+    sql="select * from taskmanager where description like '%" +key+ "%'"
+    cur=cn.cursor()
     cur.execute(sql)
-    data = cur.fetchall()
+    data=cur.fetchall()
     for d in data:
         print(d)
 def check_system():
     try:
-        cur = cn.cursor()
-        cur.execute("select id, description, deadline, status from taskmanager where status='Pending'")
-        tasks = cur.fetchall()
-        today = datetime.today().date()
+        cur=cn.cursor()
+        cur.execute("select id,description,deadline,status from taskmanager where status='Pending'")
+        tasks=cur.fetchall()
+        today=datetime.today().date()
         print("\n--- REMINDER SYSTEM (Next 7 Days) ---")
-        found = False
+        found=False
         for t in tasks:
             try:
-                deadline = datetime.strptime(t[2], "%d-%m-%Y").date()
-                differ = (deadline.year - today.year) * 365 + (deadline.month - today.month) * 30 + (
-                            deadline.day - today.day)
-                if 0 <= differ <= 7:
-                    print("Task ID:", t[0], "|", t[1], "| Deadline:", t[2], "| Status:", t[3])
-                    found = True
+                deadline=datetime.strptime(t[2],"%d-%m-%Y").date()
+                differ=(deadline.year-today.year)*365+(deadline.month-today.month)*30+(deadline.day-today.day)
+                if 0<=differ<=7:
+                    print("Task ID:",t[0],"|",t[1],"| Deadline:",t[2],"| Status:",t[3])
+                    found=True
             except ValueError:
                 continue
         if not found:
             print("No tasks due in the next 7 days.")
     except Exception as e:
         print("Error in reminder system:", e)
-def task_history(action=None, task_id=None, details=""):
+def task_history(action=None,task_id=None,details=""):
     if "history" not in task_history.__dict__:
-        task_history.history = []
+        task_history.history=[]
     if action and task_id:
-        ts = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-        entry = f"Task ID: {task_id} | Action: {action} | Time: {ts} | Details: {details}"
+        ts=datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        entry=f"Task ID: {task_id} | Action: {action} | Time: {ts} | Details: {details}"
         task_history.history.append(entry)
     print("\n--- TASK HISTORY LOG ---")
     if task_history.history:
