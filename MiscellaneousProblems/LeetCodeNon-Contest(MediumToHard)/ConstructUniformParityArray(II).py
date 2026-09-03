@@ -13,6 +13,6 @@ class Solution(object):
         return True
 if __name__=='__main__':
     sol=Solution()
-    nums1=list(map(int, input("Enter Numbers (Separated By Commas):").split(',')))
+    nums1=list(map(int,input("Enter Numbers (Separated By Commas):").split(',')))
     res=sol.uniformArray(nums1)
     print(res)
