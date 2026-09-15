@@ -21,7 +21,7 @@ def frame_video(output, fps, size, prefix="frame", start=0, end=1, step=1):
     out.release()
     print(f"Video saved as {opt}. Used {u} frames (step={step}).")
 if __name__=='__main__':
-    opt=input("Output Video Filename (e.g. Kel_FULLHD_24fps(Limit).mp4):").strip()
+    opt=input("Output Video Filename (e.g. Kel_FULLHD_24fps(Condition).mp4):").strip()
     fps=int(input("FPS:").strip())
     start=int(input("Start Frame Index:").strip())
     end=int(input("End Frame Index:").strip())
