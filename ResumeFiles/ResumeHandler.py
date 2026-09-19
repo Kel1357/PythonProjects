@@ -502,7 +502,7 @@ class Resume:
         plt.grid(axis="y",linestyle="--",alpha=0.3)
         plt.tight_layout()
         plt.show()
-if __name__ == "__main__":
+if __name__=='__main__':
     self=Resume()
     while True:
         print("\nResume Handling:")
