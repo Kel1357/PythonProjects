@@ -6,7 +6,7 @@ class Resume:
         pass
     def load_records(self):
         try:
-            with open("resume.data", "rb") as f:
+            with open("resume.data","rb") as f:
                 return pickle.load(f)
         except (FileNotFoundError,EOFError):
             return []
@@ -14,9 +14,9 @@ class Resume:
             return []
     def save_all_records(self,records):
         try:
-            with open("resume.data", "wb") as f:
-                pickle.dump(records, f)
-            print("Data Saved Successfully")
+            with open("resume.data","wb") as f:
+                pickle.dump(records,f)
+            print("Data Saved Successfpickle.dump(records, f)ully")
         except Exception:
             print("Data Not Saved")
     def next(self,records):
@@ -105,7 +105,7 @@ class Resume:
             print(f"{rec['id']}\t{rec['Full Name']:<20}\t{rec['DOB']}\t{rec['Email Address']:<20}\t{rec['Phone Number']:<11}")
     def sort_data(self,p=True):
         self.show_data()
-        records = self.load_records()
+        records=self.load_records()
         print("\nCreated On:")
         for rec in records:
             print(rec["id"],rec["Created On"])
@@ -114,38 +114,38 @@ class Resume:
             return
         if p:
             print("\nSort: 1-Name/2-Date Created")
-            ch = input("Sorting Choice:").strip()
-            key = {"1": "Full Name", "2": "Created On"}
-            k = key.get(ch)
+            ch=input("Sorting Choice:").strip()
+            key={"1": "Full Name", "2": "Created On"}
+            k=key.get(ch)
             if not k:
                 print("Invalid Choice, Please Try Again")
                 return
-            order = input("Order: 1-Ascending/2-Descending:").strip()
+            order=input("Order: 1-Ascending/2-Descending:").strip()
             reverse=(order == "2")
             n=len(records)
             for i in range(n):
                 for j in range(n-i-1):
                     a=records[j][k]
                     b=records[j+1][k]
-                    if k == "Created On":
-                        a = datetime.strptime(a, "%Y-%m-%d %H:%M")
-                        b = datetime.strptime(b, "%Y-%m-%d %H:%M")
+                    if k=="Created On":
+                        a=datetime.strptime(a, "%Y-%m-%d %H:%M")
+                        b=datetime.strptime(b, "%Y-%m-%d %H:%M")
                     else:
-                        a = a.lower()
-                        b = b.lower()
+                        a=a.lower()
+                        b=b.lower()
                     if (a>b and not reverse) or (a<b and reverse):
                         t=records[j]
                         records[j]=records[j+1]
                         records[j+1]=t
-            for i, r in enumerate(records, start=1):
-                r["id"] = i
+            for i,r in enumerate(records,start=1):
+                r["id"]=i
             self.save_all_records(records)
-    def find(self, records, rid):
+    def find(self,records,rid):
         for r in records:
-            if r['id'] == rid:
+            if r['id']==rid:
                 return r
         return None
-    def print(self, r):
+    def print(self,r):
         print("\n" + "=" * 60)
         print(f"{r['Full Name']:^60}")
         print(f"DOB: {r['DOB']}".center(60))
@@ -236,7 +236,7 @@ class Resume:
             if choice not in field:
                 print("Invalid Choice, Please Try Again")
                 continue
-            fields, label, m = field[choice]
+            fields,label,m=field[choice]
             if m:
                 r[fields]=self.input(f"Enter New {label}:")
             else:
@@ -299,7 +299,7 @@ class Resume:
             return
         current=self.load_records()
         on={r["Full Name"]: r for r in old}
-        cn= [r["Full Name"] for r in current]
+        cn=[r["Full Name"] for r in current]
         m=[]
         for name,r in on.items():
             if name not in cn:
@@ -416,7 +416,7 @@ class Resume:
         base=r["Full Name"]
         exist=[rec["Full Name"] for rec in records]
         count=0
-        pre = base + " (Copy"
+        pre=base + " (Copy"
         for name in exist:
             if name==base + " (Copy)" or name[:len(pre)]==pre:
                 count=count+1
