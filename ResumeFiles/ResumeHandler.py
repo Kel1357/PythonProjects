@@ -16,7 +16,7 @@ class Resume:
         try:
             with open("resume.data","wb") as f:
                 pickle.dump(records,f)
-            print("Data Saved Successfpickle.dump(records, f)ully")
+            print("Data Saved Successully")
         except Exception:
             print("Data Not Saved")
     def next(self,records):
@@ -152,35 +152,27 @@ class Resume:
         print(f"{r['City, State']} | {r['Phone Number']} | {r['Email Address']}".center(60))
         print(f"{r['LinkedIn URL']} | {r['Portfolio / GitHub URL']}".center(60))
         print("=" * 60)
-
         print("\nPROFESSIONAL SUMMARY")
         print("-" * 60)
         print(f"{r['Summary']}")
-
         print("\nEDUCATION")
         print("-" * 60)
         print(r['Education'])
-
         print("\nEXPERIENCE")
         print("-" * 60)
         print(r['Experience'])
-
         print("\nPROJECTS")
         print("-" * 60)
         print(r['Projects'])
-
         print("\n TECHNICAL SKILLS")
         print("-" * 60)
         print(r['Skills'])
-
         print("\nCERTIFICATIONS")
         print("-" * 60)
         print(r['Certifications'])
-
         print("\nLEADERSHIP/ACTIVITIES")
         print("-" * 60)
         print(r['Leaderships'])
-
         print("\n" + "=" * 60)
         print(f"Created On: {r['Created On']}")
         print("=" * 60)
@@ -192,7 +184,7 @@ class Resume:
             print("Invalid Value, Please Try Again")
             return
         records=self.load_records()
-        r=self.find(records, rid)
+        r=self.find(records,rid)
         if not r:
             print("Resume Not Found")
             return
