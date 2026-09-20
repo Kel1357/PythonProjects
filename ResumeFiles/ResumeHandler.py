@@ -16,7 +16,11 @@ class Resume:
         try:
             with open("resume.data","wb") as f:
                 pickle.dump(records,f)
+<<<<<<< HEAD
             print("Data Saved Successully")
+=======
+            print("Data Saved Successfully")
+>>>>>>> c5597bb (Updated ResumeHandler.py in ResumeFiles)
         except Exception:
             print("Data Not Saved")
     def next(self,records):
@@ -52,28 +56,20 @@ class Resume:
             linkedin=input("LinkedIn URL:")
             port=input("Portfolio / GitHub URL:")
             city=input("Location (City, State):")
-
             print("\n---Professional Summary---")
             summary=self.input("Summary Of Your Experience & Strengths:")
-
             print("\n---Education---")
             education=self.input("Degree, University, Years, Location, Coursework, CGPA, etc.:")
-
             print("\n---Experience---")
             experience=self.input("Job Title, Company, Years, Location and Bullet Points of what you did:")
-
             print("\n---Projects---")
             projects=self.input("Project Name, Technologies Used, Years and What the Project Does:")
-
             print("\n---Technical Skills---")
             skills=self.input("Languages/Frameworks/Tools, Eg:'Languages: Python, Java, SQL, etc':")
-
             print("\n---Certifications---")
             cert=self.input("Certification Name - Issuing Organization - Date:")
-
             print("\n---Leaderships/Activities---")
             leader=self.input("Organisation / Role, Years, Location and Impact:")
-
             records.append({
                 "id": self.next(records),
                 "Full Name": fn,
@@ -145,7 +141,11 @@ class Resume:
             if r['id']==rid:
                 return r
         return None
+<<<<<<< HEAD
     def print(self,r):
+=======
+    def print_data(self,r):
+>>>>>>> c5597bb (Updated ResumeHandler.py in ResumeFiles)
         print("\n" + "=" * 60)
         print(f"{r['Full Name']:^60}")
         print(f"DOB: {r['DOB']}".center(60))
@@ -188,7 +188,7 @@ class Resume:
         if not r:
             print("Resume Not Found")
             return
-        self.print(r)
+        self.print_data(r)
     def update_data(self):
         self.show_data()
         try:
@@ -360,31 +360,24 @@ class Resume:
             f.write(f"Location: {r['City, State']} | {r['Phone Number']} | {r['Email Address']}\n".center(60))
             f.write(f"{r['LinkedIn URL']} | {r['Portfolio / GitHub URL']}\n".center(60))
             f.write("=" * 60 + "\n")
-
             f.write("\nPROFESSIONAL SUMMARY\n")
             f.write("-" * 60 + "\n")
             f.write(r["Summary"] + "\n")
-
             f.write("\nEDUCATION\n")
             f.write("-" * 60 + "\n")
             f.write(r["Education"] + "\n")
-
             f.write("\nEXPERIENCE\n")
             f.write("-" * 60 + "\n")
             f.write(r["Experience"] + "\n")
-
             f.write("\nPROJECTS\n")
             f.write("-" * 60 + "\n")
             f.write(r["Projects"] + "\n")
-
             f.write("\nTECHNICAL SKILLS\n")
             f.write("-" * 60 + "\n")
             f.write(r["Skills"] + "\n")
-
             f.write("\nCERTIFICATIONS\n")
             f.write("-" * 60 + "\n")
             f.write(r["Certifications"] + "\n")
-
             f.write("\nLEADERSHIPS/ACTIVITIES\n")
             f.write("-" * 60 + "\n")
             f.write(r["Leaderships"] + "\n")
@@ -472,7 +465,7 @@ class Resume:
                 col.append("skyblue")
         plt.figure()
         bars=plt.bar(
-            skill, count, color=col, align="center", label="Skills", edgecolor="black", width=0.5
+            skill,count,color=col,align="center",label="Skills",edgecolor="black",width=0.5
         )
         for bar in bars:
             h=bar.get_height()
@@ -489,8 +482,8 @@ class Resume:
             fontsize=12,
             pad=15,
         )
-        plt.xlabel("Skills Learned By Candidates", fontsize=11)
-        plt.ylabel("Number of Candidates", fontsize=11)
+        plt.xlabel("Skills Learned By Candidates",fontsize=11)
+        plt.ylabel("Number of Candidates",fontsize=11)
         plt.grid(axis="y",linestyle="--",alpha=0.3)
         plt.tight_layout()
         plt.show()
